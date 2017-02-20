@@ -5,51 +5,52 @@ import android.graphics.BitmapFactory;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RatingBar;
+import android.widget.Spinner;
 
-import br.com.jonas.agenda.modelo.Aluno;
+import br.com.jonas.agenda.modelo.Viagem;
 
 /**
  * Created by jonas on 12/08/15.
  */
 public class FormularioHelper {
 
-    private final EditText campoNome;
-    private final EditText campoEndereco;
-    private final EditText campoTelefone;
-    private final EditText campoSite;
-    private final RatingBar campoNota;
+    private final EditText campoOrigem;
+    private final EditText campoDestino;
+    private final EditText campoSaida;
+    private final EditText campoTarifa;
+    private final Spinner campoIdEmpresa;
     private final ImageView campoFoto;
-
-    private Aluno aluno;
+    private Viagem viagem;
 
     public FormularioHelper(FormularioActivity activity) {
-        campoNome = (EditText) activity.findViewById(R.id.formulario_nome);
-        campoEndereco = (EditText) activity.findViewById(R.id.formulario_endereco);
-        campoTelefone = (EditText) activity.findViewById(R.id.formulario_telefone);
-        campoSite = (EditText) activity.findViewById(R.id.formulario_site);
-        campoNota = (RatingBar) activity.findViewById(R.id.formulario_nota);
+        campoOrigem = (EditText) activity.findViewById(R.id.formulario_origem);
+        campoDestino = (EditText) activity.findViewById(R.id.formulario_destino);
+        campoSaida = (EditText) activity.findViewById(R.id.formulario_saida);
+        campoTarifa = (EditText) activity.findViewById(R.id.formulario_tarifa);
+        campoIdEmpresa = (Spinner) activity.findViewById(R.id.spinner);
         campoFoto = (ImageView) activity.findViewById(R.id.formulario_foto);
-        aluno = new Aluno();
+        viagem = new Viagem();
     }
 
-    public Aluno pegaAluno() {
-        aluno.setNome(campoNome.getText().toString());
-        aluno.setEndereco(campoEndereco.getText().toString());
-        aluno.setTelefone(campoTelefone.getText().toString());
-        aluno.setSite(campoSite.getText().toString());
-        aluno.setNota(Double.valueOf(campoNota.getProgress()));
-        aluno.setCaminhoFoto((String) campoFoto.getTag());
-        return aluno;
+    public Viagem pegaViagem() {
+        viagem.setOrigem(campoOrigem.getText().toString());
+        viagem.setDestino(campoDestino.getText().toString());
+        viagem.setSaida(campoSaida.getText().toString());
+        viagem.setTarifa(campoTarifa.getText().toString());
+        viagem.setId_empresa(campoIdEmpresa.getSelectedItemId()+1);
+        viagem.setCaminhoFoto((String) campoFoto.getTag());
+
+        return viagem;
     }
 
-    public void preencheFormulario(Aluno aluno) {
-        campoNome.setText(aluno.getNome());
-        campoEndereco.setText(aluno.getEndereco());
-        campoTelefone.setText(aluno.getTelefone());
-        campoSite.setText(aluno.getSite());
-        campoNota.setProgress(aluno.getNota().intValue());
-        carregaImagem(aluno.getCaminhoFoto());
-        this.aluno = aluno;
+    public void preencheFormulario(Viagem viagem) {
+        campoOrigem.setText(viagem.getOrigem());
+        campoDestino.setText(viagem.getDestino());
+        campoSaida.setText(viagem.getSaida());
+        campoTarifa.setText(viagem.getTarifa());
+        carregaImagem(viagem.getCaminhoFoto());
+        // campoIdEmpresa.setAdapter(viagem.getId_empresa());
+
     }
 
     public void carregaImagem(String caminhoFoto) {

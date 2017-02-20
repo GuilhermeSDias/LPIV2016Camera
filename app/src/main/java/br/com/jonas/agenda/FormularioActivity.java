@@ -15,8 +15,8 @@ import android.widget.Toast;
 
 import java.io.File;
 
-import br.com.jonas.agenda.dao.AlunoDAO;
-import br.com.jonas.agenda.modelo.Aluno;
+import br.com.jonas.agenda.dao.EmpresaDAO;
+import br.com.jonas.agenda.modelo.Viagem;
 
 public class FormularioActivity extends AppCompatActivity {
 
@@ -32,9 +32,9 @@ public class FormularioActivity extends AppCompatActivity {
         helper = new FormularioHelper(this);
 
         Intent intent = getIntent();
-        Aluno aluno = (Aluno) intent.getSerializableExtra("aluno");
-        if (aluno != null) {
-            helper.preencheFormulario(aluno);
+        Viagem viagem = (Viagem) intent.getSerializableExtra("viagem");
+        if (viagem != null) {
+            helper.preencheFormulario(viagem);
         }
 
         Button botaoFoto = (Button) findViewById(R.id.formulario_botao_foto);
@@ -72,17 +72,17 @@ public class FormularioActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_formulario_ok:
-                Aluno aluno = helper.pegaAluno();
+                Viagem viagem = helper.pegaViagem();
 
-                AlunoDAO dao = new AlunoDAO(this);
-                if (aluno.getId() != null) {
-                    dao.altera(aluno);
+                EmpresaDAO dao = new EmpresaDAO(this);
+                if (viagem.getId() != null) {
+                    dao.altera(viagem);
                 } else {
-                    dao.insere(aluno);
+                    dao.insere(viagem);
                 }
                 dao.close();
 
-                Toast.makeText(FormularioActivity.this, "Aluno " + aluno.getNome() + " salvo!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(FormularioActivity.this, "Viagem " + viagem.getOrigem() + " salvo!", Toast.LENGTH_SHORT).show();
 
                 finish();
                 break;

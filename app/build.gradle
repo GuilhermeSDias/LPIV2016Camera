@@ -4,7 +4,7 @@ android {
     compileSdkVersion 23
     buildToolsVersion '23.0.2'
     defaultConfig {
-        applicationId "br.com.jonas.agenda"
+        applicationId 'br.com.jonas.bus'
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1

@@ -33,31 +33,28 @@
 
         <EditText android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Nome"
-            android:id="@+id/formulario_nome"/>
+            android:hint="Origem"
+            android:id="@+id/formulario_origem"/>
 
         <EditText android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Endereço"
-            android:id="@+id/formulario_endereco"/>
+            android:hint="Destino"
+            android:id="@+id/formulario_destino"/>
 
         <EditText android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Telefone"
-            android:id="@+id/formulario_telefone"/>
+            android:hint="Saida"
+            android:id="@+id/formulario_saida"/>
 
         <EditText android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Site"
-            android:id="@+id/formulario_site"/>
+            android:hint="Tarifa"
+            android:id="@+id/formulario_tarifa"/>
 
-        <RatingBar
-            android:layout_width="wrap_content"
+        <Spinner
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:numStars="5"
-            android:max="10"
-            android:layout_gravity="center"
-            android:id="@+id/formulario_nota"/>
+            android:id="@+id/spinner" />
 
 
     </LinearLayout>
